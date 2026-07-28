@@ -1,0 +1,24 @@
+class Solution:
+
+    def isAlpha(self, c):
+        return (ord('A') <= ord(c) <= ord('Z') or 
+                ord('a') <= ord(c) <= ord('z') or 
+                ord('0') <= ord(c) <= ord('9'))
+
+    def isPalindrome(self, s: str) -> bool:
+        
+        lp = 0
+        rp = len(s) - 1
+
+        while lp < rp:
+            while lp < rp and not self.isAlpha(s[lp]):
+                lp += 1
+            while rp > lp and not self.isAlpha(s[rp]):
+                rp -= 1
+            if s[lp].lower() != s[rp].lower():
+                return False
+            lp += 1
+            rp -= 1
+        return True
+            
+        
